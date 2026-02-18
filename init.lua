@@ -21,9 +21,19 @@ require("keymaps")
 -- 自動コマンドの設定
 require("autocmds")
 
--- プラグインの設定（lazy.nvim で読み込み）
-require("lazy").setup("plugins")
+-- 各種プラグインのインストール
+require("lazy").setup({
+	spec = {
+		{ import = "plugins" },
+	},
+	performance = {
+		rtp = {
+			disabled_plugins = { "tohtml", "gzip", "zipPlugin", "netrwPlugin", "tarPlugin" },
+		},
+	},
+	ui = {
+		border = "rounded",
+	},
+})
 
--- 各種セットアップ
-require("setup.treesitter")
-require("setup.lspconfig")
+vim.cmd.colorscheme("catppuccin")
