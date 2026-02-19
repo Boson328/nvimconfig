@@ -14,7 +14,9 @@ return {
 						nil,
 						---@type oil.OpenOpts
 						{
-							preview = { vertical = true },
+							preview = {
+								vertical = true,
+							},
 							max_width = math.floor(vim.o.columns * 0.8),
 							max_height = math.floor(vim.o.lines * 0.8),
 						}
@@ -26,10 +28,16 @@ return {
 		---@module 'oil'
 		---@type oil.SetupOpts
 		opts = {
+			skip_confirm_for_simple_edits = true,
+
 			keymaps = {
 				["q"] = "actions.close",
 			},
+			view_options = {
+				show_hidden = true,
+			},
 			float = {
+				preview_split = "right",
 				max_width = math.floor(vim.o.columns * 0.8),
 				max_height = math.floor(vim.o.lines * 0.8),
 			},

@@ -15,9 +15,6 @@ vim.opt.rtp:prepend(lazypath)
 -- 基本オプションの設定
 require("options")
 
--- キーマップの設定
-require("keymaps")
-
 -- 自動コマンドの設定
 require("autocmds")
 
@@ -40,3 +37,5 @@ require("lazy").setup({
 })
 
 vim.cmd.colorscheme("catppuccin")
+
+require("keymaps")

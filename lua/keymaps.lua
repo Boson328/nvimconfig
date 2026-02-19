@@ -1,4 +1,3 @@
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
+local wk = require("which-key")
 
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+wk.add({ { "<leader>w", "<cmd>w<cr>", desc = "Save" }, { "" } })

@@ -8,7 +8,7 @@ return {
 		opts = {
 			bigfile = { enabled = false },
 			dashboard = { enabled = true },
-			explorer = { enabled = true },
+			explorer = { enabled = false },
 			indent = { enabled = true },
 			input = { enabled = true },
 			notifier = {
@@ -25,7 +25,7 @@ return {
 			words = { enabled = true },
 			terminal = {
 				win = {
-					style = "float", -- フローティング
+					style = "float",
 					width = math.floor(vim.o.columns * 0.8),
 					height = math.floor(vim.o.lines * 0.8),
 					border = "rounded",
@@ -69,21 +69,7 @@ return {
 				end,
 				desc = "Notification History",
 			},
-			{
-				"<leader>e",
-				function()
-					Snacks.explorer()
-				end,
-				desc = "File Explorer",
-			},
 			-- find
-			{
-				"<leader>fb",
-				function()
-					Snacks.picker.buffers()
-				end,
-				desc = "Buffers",
-			},
 			{
 				"<leader>fc",
 				function()
