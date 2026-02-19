@@ -31,6 +31,9 @@ require("lazy").setup({
 			disabled_plugins = { "tohtml", "gzip", "zipPlugin", "netrwPlugin", "tarPlugin" },
 		},
 	},
+	default = {
+		lazy = true,
+	},
 	ui = {
 		border = "rounded",
 	},
