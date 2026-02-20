@@ -35,3 +35,4 @@ vim.g.mapleader = " "
 vim.o.winborder = "rounded"
 
 vim.cmd("filetype plugin indent on")
+

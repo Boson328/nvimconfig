@@ -1,6 +1,6 @@
 return {
 	"saghen/blink.cmp",
-	dependencies = "rafamadriz/friendly-snippets",
+	dependencies = { "rafamadriz/friendly-snippets", "saghen/blink.compat" },
 	version = "*",
 	event = { "InsertEnter", "CmdlineEnter" },
 	opts = {
@@ -19,7 +19,13 @@ return {
 			nerd_font_variant = "mono",
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = { "lsp", "path", "snippets", "buffer", "crates" },
+			providers = {
+				crates = {
+					name = "crates",
+					module = "blink.compat.source",
+				},
+			},
 		},
 		completion = {
 			ghost_text = {

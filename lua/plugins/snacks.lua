@@ -11,6 +11,9 @@ return {
 			explorer = { enabled = false },
 			indent = { enabled = true },
 			input = { enabled = true },
+			grep = {
+				cwd = vim.fn.getcwd(),
+			},
 			notifier = {
 				enabled = true,
 				timeout = 3000,
@@ -500,18 +503,22 @@ return {
 				desc = "Dismiss All Notifications",
 			},
 			{
-				"<c-/>",
+				"-",
 				function()
-					Snacks.terminal()
+					local dir = vim.fn.expand("%:p:h")
+					vim.cmd("cd " .. dir)
+					Snacks.terminal(nil, { cwd = dir })
 				end,
-				desc = "Toggle Terminal",
+				desc = "ターミナルを開く",
+				mode = { "n" },
 			},
 			{
-				"<c-_>",
+				"-",
 				function()
-					Snacks.terminal()
+					Snacks.terminal.toggle()
 				end,
-				desc = "which_key_ignore",
+				desc = "ターミナルを閉じる",
+				mode = { "t" },
 			},
 			{
 				"]]",
@@ -528,24 +535,6 @@ return {
 				end,
 				desc = "Prev Reference",
 				mode = { "n", "t" },
-			},
-			{
-				"<leader>N",
-				desc = "Neovim News",
-				function()
-					Snacks.win({
-						file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
-						width = 0.6,
-						height = 0.6,
-						wo = {
-							spell = false,
-							wrap = false,
-							signcolumn = "yes",
-							statuscolumn = " ",
-							conceallevel = 3,
-						},
-					})
-				end,
 			},
 		},
 		init = function()
