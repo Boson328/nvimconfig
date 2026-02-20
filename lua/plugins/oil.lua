@@ -22,7 +22,7 @@ return {
 						}
 					)
 				end,
-				desc = "Toggle oil float",
+				desc = "Oilを開く",
 			},
 		},
 		---@module 'oil'
@@ -32,7 +32,10 @@ return {
 
 			keymaps = {
 				["q"] = "actions.close",
+				["H"] = "actions.parent",
+				["<CR>"] = "actions.select",
 			},
+			use_default_keymaps = false,
 			view_options = {
 				show_hidden = true,
 			},
@@ -42,6 +45,10 @@ return {
 				max_height = math.floor(vim.o.lines * 0.8),
 			},
 			default_file_explorer = true,
+			win_options = {
+				number = true,
+				relativenumber = true,
+			},
 		},
 	},
 }
