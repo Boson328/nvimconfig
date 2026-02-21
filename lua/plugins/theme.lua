@@ -6,7 +6,7 @@ return {
 		priority = 1000,
 
 		opts = {
-			transparent_background = true,
+			-- transparent_background = true,
 			flavour = "mocha", -- latte, frappe, macchiato, mocha
 			integrations = {
 				snacks = true, -- Snacks.nvim のインテグレーション

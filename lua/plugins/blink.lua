@@ -3,6 +3,8 @@ return {
 	dependencies = { "rafamadriz/friendly-snippets", "saghen/blink.compat" },
 	version = "*",
 	event = { "InsertEnter", "CmdlineEnter" },
+	---@module 'blink.cmp'
+	---@type blink.cmp.Config
 	opts = {
 		keymap = {
 			preset = "default",
@@ -40,5 +42,6 @@ return {
 				},
 			},
 		},
+		signature = { enabled = false },
 	},
 }

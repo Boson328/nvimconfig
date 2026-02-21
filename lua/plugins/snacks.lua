@@ -1,3 +1,11 @@
+local function git_root_or_cwd()
+	local result = vim.system({ "git", "rev-parse", "--show-toplevel" }, { text = true }):wait()
+	if result.code == 0 then
+		return vim.trim(result.stdout)
+	end
+	return vim.fn.getcwd()
+end
+
 return {
 	{
 		"folke/snacks.nvim",
@@ -54,7 +62,7 @@ return {
 			{
 				"<leader>/",
 				function()
-					Snacks.picker.grep()
+					Snacks.picker.grep({ cwd = git_root_or_cwd() })
 				end,
 				desc = "Grep",
 			},
@@ -189,7 +197,7 @@ return {
 			},
 			-- Grep
 			{
-				"<leader>sb",
+				"<leader>j",
 				function()
 					Snacks.picker.lines()
 				end,

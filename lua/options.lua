@@ -17,6 +17,8 @@ opt.clipboard = "unnamed"
 
 opt.winborder = "single"
 
+opt.fillchars:append({ eob = " " })
+
 vim.g.clipboard = {
 	name = "myClipboard",
 	copy = {
@@ -35,4 +37,3 @@ vim.g.mapleader = " "
 vim.o.winborder = "rounded"
 
 vim.cmd("filetype plugin indent on")
-
