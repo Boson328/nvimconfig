@@ -13,24 +13,28 @@ opt.expandtab = true
 opt.ignorecase = true
 opt.smartcase = true
 
-opt.clipboard = "unnamed"
-
 opt.winborder = "single"
 
 opt.fillchars:append({ eob = " " })
 
-vim.g.clipboard = {
-	name = "myClipboard",
-	copy = {
-		["+"] = "win32yank.exe -i",
-		["*"] = "win32yank.exe -i",
-	},
-	paste = {
-		["+"] = "win32yank.exe -o",
-		["*"] = "win32yank.exe -o",
-	},
-	cache_enabled = 1,
-}
+if vim.fn.has("wsl") == 1 then
+	opt.clipboard = "unnamed"
+	-- WSL環境
+	vim.g.clipboard = {
+		name = "win32yank",
+		copy = {
+			["+"] = "win32yank.exe -i",
+			["*"] = "win32yank.exe -i",
+		},
+		paste = {
+			["+"] = "win32yank.exe -o",
+			["*"] = "win32yank.exe -o",
+		},
+		cache_enabled = 1,
+	}
+elseif vim.fn.has("unix") == 1 then
+	opt.clipboard = "unnamedplus"
+end
 
 vim.g.mapleader = " "
 
