@@ -42,6 +42,11 @@ return {
 					border = "rounded",
 				},
 			},
+			indent = {
+				animate = {
+					enabled = false,
+				},
+			},
 		},
 		keys = {
 			-- Top Pickers & Explorer
@@ -50,35 +55,35 @@ return {
 				function()
 					Snacks.picker.smart()
 				end,
-				desc = "Smart Find Files",
+				desc = "適当にファイル開く",
 			},
 			{
 				"<leader>,",
 				function()
 					Snacks.picker.buffers()
 				end,
-				desc = "Buffers",
+				desc = "バッファ一覧",
 			},
 			{
 				"<leader>/",
 				function()
 					Snacks.picker.grep({ cwd = git_root_or_cwd() })
 				end,
-				desc = "Grep",
+				desc = "フォルダーから検索",
 			},
 			{
 				"<leader>:",
 				function()
 					Snacks.picker.command_history()
 				end,
-				desc = "Command History",
+				desc = "コマンド履歴",
 			},
 			{
 				"<leader>n",
 				function()
 					Snacks.picker.notifications()
 				end,
-				desc = "Notification History",
+				desc = "通知履歴",
 			},
 			-- find
 			{
@@ -86,35 +91,35 @@ return {
 				function()
 					Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
 				end,
-				desc = "Find Config File",
+				desc = "設定ファイルを検索",
 			},
 			{
 				"<leader>ff",
 				function()
 					Snacks.picker.files()
 				end,
-				desc = "Find Files",
+				desc = "ファイルを検索",
 			},
 			{
 				"<leader>fg",
 				function()
 					Snacks.picker.git_files()
 				end,
-				desc = "Find Git Files",
+				desc = "リポジトリ内で検索",
 			},
 			{
 				"<leader>fp",
 				function()
 					Snacks.picker.projects()
 				end,
-				desc = "Projects",
+				desc = "プロジェクトを検索",
 			},
 			{
 				"<leader>fr",
 				function()
 					Snacks.picker.recent()
 				end,
-				desc = "Recent",
+				desc = "最近のファイルを検索",
 			},
 			-- git
 			{
@@ -122,14 +127,14 @@ return {
 				function()
 					Snacks.picker.git_branches()
 				end,
-				desc = "Git Branches",
+				desc = "ブランチを検索",
 			},
 			{
 				"<leader>gl",
 				function()
 					Snacks.picker.git_log()
 				end,
-				desc = "Git Log",
+				desc = "Gitのログを検索",
 			},
 			{
 				"<leader>gL",
@@ -486,14 +491,14 @@ return {
 				function()
 					Snacks.rename.rename_file()
 				end,
-				desc = "Rename File",
+				desc = "ファイル名を変更",
 			},
 			{
 				"<leader>gB",
 				function()
 					Snacks.gitbrowse()
 				end,
-				desc = "Git Browse",
+				desc = "github.comで開く",
 				mode = { "n", "v" },
 			},
 			{
@@ -501,7 +506,7 @@ return {
 				function()
 					Snacks.lazygit()
 				end,
-				desc = "Lazygit",
+				desc = "LazyGitを開く",
 			},
 			{
 				"<leader>un",
@@ -513,6 +518,11 @@ return {
 			{
 				"-",
 				function()
+					-- ターミナルバッファなら何もしない
+					if vim.bo.buftype == "terminal" then
+						Snacks.terminal.toggle()
+						return
+					end
 					local dir = vim.fn.expand("%:p:h")
 					vim.cmd("cd " .. dir)
 					Snacks.terminal(nil, { cwd = dir })
@@ -528,6 +538,7 @@ return {
 				desc = "ターミナルを閉じる",
 				mode = { "t" },
 			},
+
 			{
 				"]]",
 				function()
