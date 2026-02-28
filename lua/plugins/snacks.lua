@@ -516,7 +516,7 @@ return {
 				desc = "Dismiss All Notifications",
 			},
 			{
-				"-",
+				"<C-a>",
 				function()
 					-- ターミナルバッファなら何もしない
 					if vim.bo.buftype == "terminal" then
@@ -531,7 +531,7 @@ return {
 				mode = { "n" },
 			},
 			{
-				"-",
+				"<C-a>",
 				function()
 					Snacks.terminal.toggle()
 				end,

@@ -28,3 +28,8 @@ vim.api.nvim_create_autocmd("WinClosed", {
 		win_prev_buf[win] = nil
 	end,
 })
+
+vim.api.nvim_create_autocmd({ "WinEnter", "FocusGained", "BufEnter" }, {
+	pattern = "*",
+	command = "checktime",
+})
