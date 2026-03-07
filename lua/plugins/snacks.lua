@@ -1,9 +1,10 @@
 local function git_root_or_cwd()
-	local result = vim.system({ "git", "rev-parse", "--show-toplevel" }, { text = true }):wait()
+	local buf_dir = vim.fn.expand("%:p:h") -- 現在バッファのディレクトリ
+	local result = vim.system({ "git", "rev-parse", "--show-toplevel" }, { text = true, cwd = buf_dir }):wait()
 	if result.code == 0 then
 		return vim.trim(result.stdout)
 	end
-	return vim.fn.getcwd()
+	return buf_dir
 end
 
 return {
@@ -504,7 +505,7 @@ return {
 			{
 				"<leader>gg",
 				function()
-					Snacks.lazygit()
+					Snacks.lazygit({ cwd = git_root_or_cwd() })
 				end,
 				desc = "LazyGitを開く",
 			},
