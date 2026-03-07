@@ -20,7 +20,7 @@ return {
 			indent = { enabled = true },
 			input = { enabled = true },
 			grep = {
-				cwd = vim.fn.getcwd(),
+				cwd = git_root_or_cwd(),
 			},
 			notifier = {
 				enabled = true,
