@@ -61,6 +61,12 @@ return {
 								["async-recursion"] = { "async_recursion" },
 							},
 						},
+						imports = {
+							granularity = {
+								group = "module",
+							},
+							prefix = "self",
+						},
 						inlayHints = {
 							bindingModeHints = { enable = false },
 							chainingHints = { enable = true },

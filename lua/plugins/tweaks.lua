@@ -1,5 +1,31 @@
 return {
 	{
+		"nvim-mini/mini.move",
+		version = false,
+		-- No need to copy this inside `setup()`. Will be used automatically.
+		-- Module mappings. Use `''` (empty string) to disable one.
+		opts = {
+			mappings = {
+				left = "<A-h>",
+				right = "<A-l>",
+				down = "<A-j>",
+				up = "<A-k>",
+
+				-- Move current line in Normal mode
+				line_left = "<A-h>",
+				line_right = "<A-l>",
+				line_down = "<A-j>",
+				line_up = "<A-k>",
+			},
+
+			-- Options which control moving behavior
+			options = {
+				-- Automatically reindent selection during linewise vertical move
+				reindent_linewise = true,
+			},
+		},
+	},
+	{
 		"uga-rosa/ccc.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {
@@ -15,6 +41,16 @@ return {
 		"echasnovski/mini.pairs",
 		event = "InsertEnter",
 		opts = {},
+		keys = {
+			{
+				"<CR>",
+				function()
+					return require("mini.pairs").cr()
+				end,
+				mode = "i",
+				expr = true,
+			},
+		},
 	},
 	{
 		"folke/lazydev.nvim",
@@ -60,5 +96,13 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {},
+	},
+	{
+		"kylechui/nvim-surround",
+		version = "*",
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup()
+		end,
 	},
 }

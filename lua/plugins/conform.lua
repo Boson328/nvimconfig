@@ -15,7 +15,14 @@ return {
 		},
 		opts = {
 			formatters_by_ft = {
+				rust = { "rustfmt", lsp_format = "last" },
 				lua = { "stylua" },
+				typescript = { "prettier" },
+				typescriptreact = { "prettier" },
+				javascript = { "prettier" },
+				javascriptreact = { "prettier" },
+				json = { "prettier" },
+				css = { "prettier" },
 				-- 必要な言語を追加
 			},
 			format_on_save = {
