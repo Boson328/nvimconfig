@@ -37,6 +37,7 @@ return {
 				end,
 			}
 			vim.lsp.config.wgsl_analyzer = {}
+            vim.lsp.config.nil_ls = {}
 
 			vim.lsp.enable("lua_ls")
 			vim.lsp.enable("clangd")
@@ -44,6 +45,7 @@ return {
 			vim.lsp.enable("pyright")
 			vim.lsp.enable("ruff_lsp")
 			vim.lsp.enable("wgsl_analyzer")
+			vim.lsp.enable("nil_ls")
 		end,
 	},
 }

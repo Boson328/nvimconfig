@@ -23,6 +23,7 @@ return {
 				javascriptreact = { "prettier" },
 				json = { "prettier" },
 				css = { "prettier" },
+                nix = { "nixfmt" }
 				-- 必要な言語を追加
 			},
 			format_on_save = {
