@@ -23,8 +23,8 @@ return {
 				javascriptreact = { "prettier" },
 				json = { "prettier" },
 				css = { "prettier" },
-                nix = { "nixfmt" },
-                python = { "ruff" }
+				nix = { "nixfmt" },
+				python = { "ruff_format", "ruff" },
 				-- 必要な言語を追加
 			},
 			format_on_save = {
