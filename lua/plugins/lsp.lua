@@ -3,7 +3,14 @@ return {
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
-			vim.lsp.config.clangd = {}
+			vim.lsp.config.clangd = {
+				cmd = {
+					"clangd",
+					"--background-index",
+					"--clang-tidy",
+				},
+				filetypes = { "c", "cpp", "cuda" }, -- cudaを追加
+			}
 			vim.lsp.config.lua_ls = {
 				settings = {
 					Lua = {
@@ -37,7 +44,7 @@ return {
 				end,
 			}
 			vim.lsp.config.wgsl_analyzer = {}
-            vim.lsp.config.nil_ls = {}
+			vim.lsp.config.nil_ls = {}
 
 			vim.lsp.enable("lua_ls")
 			vim.lsp.enable("clangd")
