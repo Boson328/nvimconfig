@@ -1,7 +1,7 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		branch = "master",
+		branch = "main",
 		build = ":TSUpdate",
 		event = { "BufReadPost", "BufNewFile" },
 		commit = "v0.9.3",
