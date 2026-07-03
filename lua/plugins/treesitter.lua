@@ -4,7 +4,6 @@ return {
 		branch = "main",
 		build = ":TSUpdate",
 		event = { "BufReadPost", "BufNewFile" },
-		commit = "v0.9.3",
 		config = function()
 			local install_dir = vim.fn.stdpath("data") .. "/site"
 			vim.opt.runtimepath:prepend(install_dir) -- ← 追加
