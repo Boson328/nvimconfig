@@ -25,6 +25,19 @@ wk.add({
 		desc = "リネーム",
 	},
 	{
+		"<leader>cr",
+		function()
+			vim.cmd("write")
+			local file = vim.fn.expand("%")
+			local out = vim.fn.expand("%:p:r")
+			vim.cmd(string.format("split | terminal gcc '%s' -o '%s' && '%s'", file, out, out))
+		end,
+		desc = "Run C file",
+		cond = function()
+			return vim.bo.filetype == "c"
+		end,
+	},
+	{
 		"<leader>rl",
 		function()
 			local line = vim.api.nvim_get_current_line()
