@@ -58,5 +58,8 @@ wk.add({
 		end,
 		desc = "let -> let mut",
 		mode = { "n" },
+		cond = function()
+			return vim.bo.filetype == "rust"
+		end,
 	},
 })
