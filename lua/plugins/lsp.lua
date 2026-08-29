@@ -1,3 +1,12 @@
+local function git_root_or_cwd()
+	local buf_dir = vim.fn.expand("%:p:h") -- 現在バッファのディレクトリ
+	local result = vim.system({ "git", "rev-parse", "--show-toplevel" }, { text = true, cwd = buf_dir }):wait()
+	if result.code == 0 then
+		return vim.trim(result.stdout)
+	end
+	return buf_dir
+end
+
 return {
 	{
 		"neovim/nvim-lspconfig",
@@ -48,7 +57,9 @@ return {
 			vim.lsp.config.csharp_ls = {
 				cmd = { "csharp-ls" },
 				filetypes = { "cs" },
-				root_markers = { ".git", "*.sln", "*.csproj" },
+				root_dir = function(bufnr, on_dir)
+					on_dir(git_root_or_cwd())
+				end,
 			}
 
 			vim.lsp.enable("lua_ls")
