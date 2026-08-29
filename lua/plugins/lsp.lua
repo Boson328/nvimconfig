@@ -48,7 +48,7 @@ return {
 			vim.lsp.config.csharp_ls = {
 				cmd = { "csharp-ls" },
 				filetypes = { "cs" },
-				root_markers = { "*.sln", "*.csproj" },
+				root_markers = { ".git", "*.sln", "*.csproj" },
 			}
 
 			vim.lsp.enable("lua_ls")
