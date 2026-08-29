@@ -45,6 +45,11 @@ return {
 			}
 			vim.lsp.config.wgsl_analyzer = {}
 			vim.lsp.config.nil_ls = {}
+			vim.lsp.config.csharp_ls = {
+				cmd = { "csharp-ls" },
+				filetypes = { "cs" },
+				root_markers = { "*.sln", "*.csproj" },
+			}
 
 			vim.lsp.enable("lua_ls")
 			vim.lsp.enable("clangd")
@@ -53,6 +58,7 @@ return {
 			vim.lsp.enable("ruff_lsp")
 			vim.lsp.enable("wgsl_analyzer")
 			vim.lsp.enable("nil_ls")
+			vim.lsp.enable("csharp-ls")
 		end,
 	},
 }
