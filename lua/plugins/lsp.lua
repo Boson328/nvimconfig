@@ -58,7 +58,7 @@ return {
 			vim.lsp.enable("ruff_lsp")
 			vim.lsp.enable("wgsl_analyzer")
 			vim.lsp.enable("nil_ls")
-			vim.lsp.enable("csharp-ls")
+			vim.lsp.enable("csharp_ls")
 		end,
 	},
 }
