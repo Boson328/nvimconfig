@@ -54,12 +54,24 @@ return {
 			}
 			vim.lsp.config.wgsl_analyzer = {}
 			vim.lsp.config.nil_ls = {}
-			vim.lsp.config.csharp_ls = {
-				cmd = { "csharp-ls" },
+			vim.lsp.config.omnisharp = {
+				cmd = { "OmniSharp" },
 				filetypes = { "cs" },
 				root_dir = function(bufnr, on_dir)
 					on_dir(git_root_or_cwd())
 				end,
+				init_options = {},
+				settings = {
+					FormattingOptions = {
+						EnableEditorConfigSupport = true,
+					},
+					MsBuild = {
+						LoadProjectsOnDemand = true,
+					},
+					RoslynExtensionsOptions = {
+						EnableAnalyzersSupport = true,
+					},
+				},
 			}
 
 			vim.lsp.enable("lua_ls")
@@ -69,7 +81,7 @@ return {
 			vim.lsp.enable("ruff_lsp")
 			vim.lsp.enable("wgsl_analyzer")
 			vim.lsp.enable("nil_ls")
-			vim.lsp.enable("csharp_ls")
+			vim.lsp.enable("omnisharp")
 		end,
 	},
 }
